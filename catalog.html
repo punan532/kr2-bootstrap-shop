@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Каталог товаров PunanovStore с фильтрами по категории и цене.">
+  <title>Каталог — PunanovStore</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <!-- Bootstrap 5.3.8 подключён локально (без CDN) -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Иконки Bootstrap Icons, тоже локально -->
+  <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <!-- Собственные стили подключаются ПОСЛЕ Bootstrap, чтобы переопределять его -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-body-tertiary">
+  <a class="visually-hidden-focusable skip-link btn btn-primary" href="#main">Перейти к содержимому</a>
+
+  <nav class="navbar navbar-expand-lg bg-body shadow-sm sticky-top" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo.png" alt="PunanovStore — на главную" width="188" height="32">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+              aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="catalog.html">Каталог</a></li>
+          <li class="nav-item"><a class="nav-link" href="product.html">Товар</a></li>
+          <li class="nav-item"><a class="nav-link" href="order.html">Заявка</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Категории
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+              <li><a class="dropdown-item" href="catalog.html?category=food"><i class="bi bi-egg-fried me-2" aria-hidden="true"></i>Еда</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=drinks"><i class="bi bi-cup-straw me-2" aria-hidden="true"></i>Напитки</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=farm"><i class="bi bi-tree me-2" aria-hidden="true"></i>Ферма</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=home"><i class="bi bi-house-heart me-2" aria-hidden="true"></i>Для дома</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="catalog.html">Все товары</a></li>
+            </ul>
+          </li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
+              <i class="bi bi-lightning-charge" aria-hidden="true"></i> Быстрая заявка
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <div class="container my-4 my-lg-5">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Каталог</li>
+        </ol>
+      </nav>
+
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <h1 class="h2 mb-0">Каталог товаров</h1>
+        <!-- На экранах меньше lg фильтры открываются в offcanvas -->
+        <button class="btn btn-outline-primary d-lg-none" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#filtersOffcanvas" aria-controls="filtersOffcanvas">
+          <i class="bi bi-funnel" aria-hidden="true"></i> Фильтры
+        </button>
+      </div>
+
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <i class="bi bi-info-circle me-1" aria-hidden="true"></i>
+        Фильтры и сортировка работают сразу, без перезагрузки страницы. Нажмите «Заказать», чтобы оставить быструю заявку.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+      </div>
+
+      <div class="row g-4">
+        <!-- Боковая колонка с фильтрами: offcanvas-lg = обычный блок на lg+, выезжающая панель на меньших экранах -->
+        <aside class="col-12 col-lg-3">
+          <div class="offcanvas-lg offcanvas-start catalog-sidebar" tabindex="-1" id="filtersOffcanvas" aria-labelledby="filtersTitle">
+            <div class="offcanvas-header">
+              <h2 class="offcanvas-title h5" id="filtersTitle">Фильтры</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#filtersOffcanvas" aria-label="Закрыть"></button>
+            </div>
+            <div class="offcanvas-body">
+              <form id="filtersForm" class="card card-body shadow-sm w-100" action="#" method="get" aria-label="Фильтры каталога">
+                <div class="mb-3">
+                  <label for="filter-search" class="form-label fw-semibold">Поиск</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-search" aria-hidden="true"></i></span>
+                    <input id="filter-search" name="q" type="search" class="form-control" placeholder="Название товара">
+                  </div>
+                </div>
+
+                <fieldset class="mb-3">
+                  <legend class="form-label fw-semibold fs-6">Категория</legend>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="category" value="food" id="cat-food">
+                    <label class="form-check-label" for="cat-food">Еда</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="category" value="drinks" id="cat-drinks">
+                    <label class="form-check-label" for="cat-drinks">Напитки</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="category" value="farm" id="cat-farm">
+                    <label class="form-check-label" for="cat-farm">Ферма</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="category" value="home" id="cat-home">
+                    <label class="form-check-label" for="cat-home">Для дома</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="mb-3">
+                  <legend class="form-label fw-semibold fs-6">Цена, ₽</legend>
+                  <div class="row g-2">
+                    <div class="col-6 col-lg-12 col-xl-6">
+                      <div class="input-group input-group-sm">
+                        <span class="input-group-text">от</span>
+                        <input id="price-from" name="price-from" type="number" min="0" class="form-control" placeholder="0" aria-label="Цена от">
+                      </div>
+                    </div>
+                    <div class="col-6 col-lg-12 col-xl-6">
+                      <div class="input-group input-group-sm">
+                        <span class="input-group-text">до</span>
+                        <input id="price-to" name="price-to" type="number" min="0" class="form-control" placeholder="200000" aria-label="Цена до">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <div class="form-check form-switch mb-3">
+                  <input class="form-check-input" type="checkbox" role="switch" id="filter-sale" name="sale">
+                  <label class="form-check-label" for="filter-sale">Только со скидкой</label>
+                </div>
+
+                <button class="btn btn-outline-secondary w-100" type="reset">
+                  <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i> Сбросить фильтры
+                </button>
+              </form>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Список товаров -->
+        <section class="col-12 col-lg-9" aria-labelledby="results-title">
+          <h2 id="results-title" class="visually-hidden">Товары</h2>
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <p class="mb-0 text-secondary" aria-live="polite">
+              Найдено: <span class="badge text-bg-primary" id="resultsCount">6</span>
+            </p>
+            <div class="d-flex align-items-center gap-2">
+              <label for="sort-select" class="form-label mb-0 small text-secondary text-nowrap">Сортировка</label>
+              <select id="sort-select" name="sort" class="form-select form-select-sm w-auto">
+                <option value="popular" selected>по популярности</option>
+                <option value="price-asc">сначала дешевле</option>
+                <option value="price-desc">сначала дороже</option>
+                <option value="name">по названию</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row g-4" id="catalogGrid">
+          <div class="col-12 col-md-6 col-xl-4 catalog-item" data-category="food" data-price="121" data-sale="0" data-popular="1" data-name="Бутерброд «Классика»">
+            <article class="card h-100 shadow-sm product-card">
+              <div class="product-card__image rounded-top">
+                <img src="images/sandwich.webp" alt="Бутерброд с ветчиной и сыром на белом хлебе" width="640" height="600" loading="lazy">
+                <span class="badge text-bg-warning">Хит</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <p class="small text-secondary mb-1">Еда</p>
+                <h3 class="card-title h5">Бутерброд «Классика»</h3>
+                <p class="card-text text-secondary">Сэндвич с ветчиной и сыром на мягком белом хлебе. Быстрый перекус на каждый день.</p>
+                <p class="fs-5 fw-bold mt-auto mb-3">121 ₽</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-primary" href="product.html?id=sandwich">Подробнее</a>
+                  <button class="btn btn-outline-primary btn-order" type="button"
+                          data-bs-toggle="modal" data-bs-target="#orderModal" data-product="sandwich">
+                    <i class="bi bi-bag-plus" aria-hidden="true"></i> Заказать
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-xl-4 catalog-item" data-category="farm" data-price="150000" data-sale="0" data-popular="2" data-name="Бычок-осеменитель">
+            <article class="card h-100 shadow-sm product-card">
+              <div class="product-card__image rounded-top">
+                <img src="images/bull.webp" alt="Чёрный племенной бык в полный рост" width="632" height="640" loading="lazy">
+                <span class="badge text-bg-success">Новинка</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <p class="small text-secondary mb-1">Ферма</p>
+                <h3 class="card-title h5">Бычок-осеменитель</h3>
+                <p class="card-text text-secondary">Племенной чёрный бык крепкого телосложения. Спокойный нрав, подходит для фермерского хозяйства.</p>
+                <p class="fs-5 fw-bold mt-auto mb-3">150 000 ₽</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-primary" href="product.html?id=bull">Подробнее</a>
+                  <button class="btn btn-outline-primary btn-order" type="button"
+                          data-bs-toggle="modal" data-bs-target="#orderModal" data-product="bull">
+                    <i class="bi bi-bag-plus" aria-hidden="true"></i> Заказать
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-xl-4 catalog-item" data-category="drinks" data-price="548" data-sale="1" data-popular="3" data-name="Водка «Пять Озёр» 0,5 л">
+            <article class="card h-100 shadow-sm product-card">
+              <div class="product-card__image rounded-top">
+                <img src="images/vodka.webp" alt="Бутылка водки «Пять Озёр» с синей этикеткой" width="500" height="640" loading="lazy">
+                <span class="badge text-bg-danger">Скидка</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <p class="small text-secondary mb-1">Напитки <span class="badge text-bg-dark">18+</span></p>
+                <h3 class="card-title h5">Водка «Пять Озёр» 0,5 л</h3>
+                <p class="card-text text-secondary">Водка в классической стеклянной бутылке. Мягкий вкус, подходит для праздничного стола.</p>
+                <p class="fs-5 fw-bold mt-auto mb-3">548 ₽ <span class="price-old">610 ₽</span></p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-primary" href="product.html?id=vodka">Подробнее</a>
+                  <button class="btn btn-outline-primary btn-order" type="button"
+                          data-bs-toggle="modal" data-bs-target="#orderModal" data-product="vodka">
+                    <i class="bi bi-bag-plus" aria-hidden="true"></i> Заказать
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-xl-4 catalog-item" data-category="food" data-price="389" data-sale="1" data-popular="4" data-name="Пельмени «Домашние» 1 кг">
+            <article class="card h-100 shadow-sm product-card">
+              <div class="product-card__image rounded-top">
+                <img src="images/pelmeni.svg" alt="Тарелка пельменей со сметаной и укропом" width="640" height="640" loading="lazy">
+                <span class="badge text-bg-danger">Скидка</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <p class="small text-secondary mb-1">Еда</p>
+                <h3 class="card-title h5">Пельмени «Домашние» 1 кг</h3>
+                <p class="card-text text-secondary">Пельмени ручной лепки из говядины и свинины. Варятся 7 минут, лучше всего со сметаной.</p>
+                <p class="fs-5 fw-bold mt-auto mb-3">389 ₽ <span class="price-old">450 ₽</span></p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-primary" href="product.html?id=pelmeni">Подробнее</a>
+                  <button class="btn btn-outline-primary btn-order" type="button"
+                          data-bs-toggle="modal" data-bs-target="#orderModal" data-product="pelmeni">
+                    <i class="bi bi-bag-plus" aria-hidden="true"></i> Заказать
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-xl-4 catalog-item" data-category="farm" data-price="1200" data-sale="0" data-popular="5" data-name="Курица-несушка">
+            <article class="card h-100 shadow-sm product-card">
+              <div class="product-card__image rounded-top">
+                <img src="images/hen.svg" alt="Рыжая курица-несушка рядом с яйцом" width="640" height="640" loading="lazy">
+                <span class="badge text-bg-success">Новинка</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <p class="small text-secondary mb-1">Ферма</p>
+                <h3 class="card-title h5">Курица-несушка</h3>
+                <p class="card-text text-secondary">Молодая рыжая несушка породы ломан браун. До 300 яиц в год, неприхотлива в содержании.</p>
+                <p class="fs-5 fw-bold mt-auto mb-3">1 200 ₽</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-primary" href="product.html?id=hen">Подробнее</a>
+                  <button class="btn btn-outline-primary btn-order" type="button"
+                          data-bs-toggle="modal" data-bs-target="#orderModal" data-product="hen">
+                    <i class="bi bi-bag-plus" aria-hidden="true"></i> Заказать
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-xl-4 catalog-item" data-category="home" data-price="4990" data-sale="0" data-popular="6" data-name="Самовар электрический 3 л">
+            <article class="card h-100 shadow-sm product-card">
+              <div class="product-card__image rounded-top">
+                <img src="images/samovar.svg" alt="Латунный электрический самовар с синим заварочным чайником" width="640" height="640" loading="lazy">
+                <span class="badge text-bg-warning">Хит</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <p class="small text-secondary mb-1">Для дома</p>
+                <h3 class="card-title h5">Самовар электрический 3 л</h3>
+                <p class="card-text text-secondary">Латунный самовар с заварочным чайником в комплекте. Закипает за 12 минут, есть автоотключение.</p>
+                <p class="fs-5 fw-bold mt-auto mb-3">4 990 ₽</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-primary" href="product.html?id=samovar">Подробнее</a>
+                  <button class="btn btn-outline-primary btn-order" type="button"
+                          data-bs-toggle="modal" data-bs-target="#orderModal" data-product="samovar">
+                    <i class="bi bi-bag-plus" aria-hidden="true"></i> Заказать
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+          </div>
+
+          <div class="alert alert-warning d-none mt-4" role="alert" id="emptyState">
+            <i class="bi bi-emoji-frown me-1" aria-hidden="true"></i>
+            По выбранным фильтрам ничего не найдено.
+            <button class="btn btn-sm btn-warning ms-2" type="button" id="resetFiltersBtn">Сбросить фильтры</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer text-white pt-5 pb-4 mt-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-5">
+          <p class="h5 mb-2">PunanovStore</p>
+          <p class="text-white-50 mb-0">
+            Учебный интернет-магазин: еда, напитки, товары для дома и фермы.
+            Версия сайта на Bootstrap 5 для контрольной работы №2.
+          </p>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <p class="fw-semibold mb-2">Разделы</p>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="catalog.html">Каталог</a></li>
+            <li class="mb-1"><a href="order.html">Оформить заявку</a></li>
+            <li class="mb-1"><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-4">
+          <p class="fw-semibold mb-2">Связь</p>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="tel:+79000000000"><i class="bi bi-telephone me-1" aria-hidden="true"></i>+7 900 000-00-00</a></li>
+            <li class="mb-1"><a class="text-break" href="mailto:shop@punanovstore.ru"><i class="bi bi-envelope me-1" aria-hidden="true"></i>shop@punanovstore.ru</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary my-4">
+      <div class="row g-2 small text-white-50">
+        <div class="col-12 col-md-6">&copy; 2026 PunanovStore. Учебный проект.</div>
+        <div class="col-12 col-md-6 text-md-end">Пунанов Е. А., группа ЭФБО-06-25</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно быстрой заявки (открывается кнопками с data-bs-target="#orderModal") -->
+  <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="orderModalLabel">Быстрая заявка</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-secondary">Оставьте контакты — менеджер перезвонит и уточнит детали заказа.</p>
+          <form id="quickOrderForm" class="needs-validation" action="#" method="post" novalidate>
+            <div class="mb-3">
+              <label for="modal-name" class="form-label">Имя *</label>
+              <input id="modal-name" name="name" type="text" class="form-control" minlength="2"
+                     autocomplete="given-name" required>
+              <div class="invalid-feedback">Введите имя (минимум 2 символа).</div>
+            </div>
+            <div class="mb-3">
+              <label for="modal-phone" class="form-label">Телефон *</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">+7</span>
+                <input id="modal-phone" name="phone" type="tel" class="form-control" inputmode="tel"
+                       placeholder="900 000-00-00" pattern="[0-9\s\-\(\)]{10,15}" autocomplete="tel-national" required>
+                <div class="invalid-feedback">Введите 10 цифр номера.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="modal-product" class="form-label">Товар *</label>
+              <select id="modal-product" name="product" class="form-select" required>
+                <option value="" selected disabled>Выберите товар</option>
+                    <option value="sandwich">Бутерброд «Классика» — 121 ₽</option>
+                    <option value="bull">Бычок-осеменитель — 150 000 ₽</option>
+                    <option value="vodka">Водка «Пять Озёр» 0,5 л — 548 ₽</option>
+                    <option value="pelmeni">Пельмени «Домашние» 1 кг — 389 ₽</option>
+                    <option value="hen">Курица-несушка — 1 200 ₽</option>
+                    <option value="samovar">Самовар электрический 3 л — 4 990 ₽</option>
+                    <option value="consult">Консультация по подбору товара</option>
+              </select>
+              <div class="invalid-feedback">Выберите товар или консультацию.</div>
+            </div>
+            <div class="form-check">
+              <input id="modal-agree" name="agree" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label" for="modal-agree">Согласен на обработку персональных данных *</label>
+              <div class="invalid-feedback">Без согласия заявку отправить нельзя.</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="submit" class="btn btn-primary" form="quickOrderForm">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast-уведомление об отправке заявки -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="appToastBody">Заявка отправлена!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle (включает Popper): navbar, modal, dropdown, accordion, tabs, carousel, toast, offcanvas -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
