@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PunanovStore — учебный интернет-магазин на Bootstrap: еда, напитки, товары для дома и фермы.">
+  <title>Главная — PunanovStore</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <!-- Bootstrap 5.3.8 подключён локально (без CDN) -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Иконки Bootstrap Icons, тоже локально -->
+  <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <!-- Собственные стили подключаются ПОСЛЕ Bootstrap, чтобы переопределять его -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+  <a class="visually-hidden-focusable skip-link btn btn-primary" href="#main">Перейти к содержимому</a>
+
+  <nav class="navbar navbar-expand-lg bg-body shadow-sm sticky-top" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo.png" alt="PunanovStore — на главную" width="188" height="32">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+              aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+          <li class="nav-item"><a class="nav-link" href="product.html">Товар</a></li>
+          <li class="nav-item"><a class="nav-link" href="order.html">Заявка</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Категории
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+              <li><a class="dropdown-item" href="catalog.html?category=food"><i class="bi bi-egg-fried me-2" aria-hidden="true"></i>Еда</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=drinks"><i class="bi bi-cup-straw me-2" aria-hidden="true"></i>Напитки</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=farm"><i class="bi bi-tree me-2" aria-hidden="true"></i>Ферма</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=home"><i class="bi bi-house-heart me-2" aria-hidden="true"></i>Для дома</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="catalog.html">Все товары</a></li>
+            </ul>
+          </li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
+              <i class="bi bi-lightning-charge" aria-hidden="true"></i> Быстрая заявка
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero-блок: фон на всю ширину, содержимое в container -->
+    <section class="hero py-5" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-12 col-lg-6">
+            <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis mb-3">КР №2 · Bootstrap 5</span>
+            <h1 id="hero-title" class="display-5 fw-bold mb-3">Всё для дома, фермы и праздничного стола</h1>
+            <p class="lead text-secondary mb-4">
+              PunanovStore — учебный интернет-магазин. От бутерброда до племенного бычка:
+              выберите товар в каталоге и оставьте заявку за минуту.
+            </p>
+            <div class="d-flex flex-wrap gap-2 btn-stack-sm mb-4">
+              <a class="btn btn-primary btn-lg" href="catalog.html">
+                <i class="bi bi-grid" aria-hidden="true"></i> Перейти в каталог
+              </a>
+              <button class="btn btn-outline-primary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
+                Быстрая заявка
+              </button>
+            </div>
+            <div class="row g-3 text-center text-sm-start">
+              <div class="col-4">
+                <p class="h4 fw-bold text-primary mb-0">6</p>
+                <p class="small text-secondary mb-0">товаров</p>
+              </div>
+              <div class="col-4">
+                <p class="h4 fw-bold text-primary mb-0">4</p>
+                <p class="small text-secondary mb-0">категории</p>
+              </div>
+              <div class="col-4">
+                <p class="h4 fw-bold text-primary mb-0">1&nbsp;день</p>
+                <p class="small text-secondary mb-0">доставка</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <!-- Дополнительный компонент: carousel -->
+            <div id="heroCarousel" class="carousel slide hero-carousel shadow-sm" data-bs-ride="carousel" aria-label="Популярные товары">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Слайд 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Слайд 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Слайд 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="4000">
+                  <img src="images/bull.webp" class="d-block w-100" alt="Чёрный племенной бык в полный рост" width="632" height="640">
+                  <div class="carousel-caption">
+                    <p class="badge text-bg-success mb-0">Новинка: бычок-осеменитель</p>
+                  </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000">
+                  <img src="images/samovar.svg" class="d-block w-100" alt="Латунный электрический самовар с синим заварочным чайником" width="640" height="640">
+                  <div class="carousel-caption">
+                    <p class="badge text-bg-warning mb-0">Хит: самовар электрический</p>
+                  </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000">
+                  <img src="images/pelmeni.svg" class="d-block w-100" alt="Тарелка пельменей со сметаной и укропом" width="640" height="640">
+                  <div class="carousel-caption">
+                    <p class="badge text-bg-danger mb-0">Скидка 13%: пельмени «Домашние»</p>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущий</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующий</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Преимущества: 1 колонка → 2 (sm) → 4 (lg) -->
+    <section class="container my-5" id="advantages" aria-labelledby="advantages-title">
+      <h2 id="advantages-title" class="section-title text-center mb-4">Почему PunanovStore</h2>
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 border-0 shadow-sm p-3">
+            <div class="card-body">
+              <span class="icon-circle mb-3"><i class="bi bi-truck" aria-hidden="true"></i></span>
+              <h3 class="h5">Доставка за 1 день</h3>
+              <p class="text-secondary mb-0">Курьер по городу на следующий день после подтверждения заявки.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 border-0 shadow-sm p-3">
+            <div class="card-body">
+              <span class="icon-circle mb-3"><i class="bi bi-shield-check" aria-hidden="true"></i></span>
+              <h3 class="h5">Проверенное качество</h3>
+              <p class="text-secondary mb-0">У каждого товара есть характеристики и документы, у бычка — родословная.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 border-0 shadow-sm p-3">
+            <div class="card-body">
+              <span class="icon-circle mb-3"><i class="bi bi-tags" aria-hidden="true"></i></span>
+              <h3 class="h5">Честные скидки</h3>
+              <p class="text-secondary mb-0">Старая цена всегда видна в карточке, акции отмечены значком.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 border-0 shadow-sm p-3">
+            <div class="card-body">
+              <span class="icon-circle mb-3"><i class="bi bi-chat-dots" aria-hidden="true"></i></span>
+              <h3 class="h5">Заявка без регистрации</h3>
+              <p class="text-secondary mb-0">Достаточно имени и телефона — менеджер перезвонит сам.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Категории: 2 колонки на телефоне, 4 на планшете и выше -->
+    <section class="container my-5" aria-labelledby="categories-title">
+      <h2 id="categories-title" class="section-title mb-4">Категории</h2>
+      <div class="row g-3">
+        <div class="col-6 col-md-3">
+          <a class="card h-100 text-center text-decoration-none shadow-sm product-card p-3" href="catalog.html?category=food">
+            <span class="icon-circle mx-auto mb-2"><i class="bi bi-egg-fried" aria-hidden="true"></i></span>
+            <span class="fw-semibold text-body">Еда</span>
+            <span class="small text-secondary">2 товара</span>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a class="card h-100 text-center text-decoration-none shadow-sm product-card p-3" href="catalog.html?category=drinks">
+            <span class="icon-circle mx-auto mb-2"><i class="bi bi-cup-straw" aria-hidden="true"></i></span>
+            <span class="fw-semibold text-body">Напитки</span>
+            <span class="small text-secondary">1 товар</span>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a class="card h-100 text-center text-decoration-none shadow-sm product-card p-3" href="catalog.html?category=farm">
+            <span class="icon-circle mx-auto mb-2"><i class="bi bi-tree" aria-hidden="true"></i></span>
+            <span class="fw-semibold text-body">Ферма</span>
+            <span class="small text-secondary">2 товара</span>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a class="card h-100 text-center text-decoration-none shadow-sm product-card p-3" href="catalog.html?category=home">
+            <span class="icon-circle mx-auto mb-2"><i class="bi bi-house-heart" aria-hidden="true"></i></span>
+            <span class="fw-semibold text-body">Для дома</span>
+            <span class="small text-secondary">1 товар</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Популярные товары: 1 → 2 (md) → 3 (lg) колонки -->
+    <section class="container my-5" id="popular" aria-labelledby="popular-title">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+        <h2 id="popular-title" class="section-title mb-0">Популярные товары</h2>
+        <a class="btn btn-outline-primary" href="catalog.html">Все товары <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card h-100 shadow-sm product-card">
+              <div class="product-card__image rounded-top">
+                <img src="images/sandwich.webp" alt="Бутерброд с ветчиной и сыром на белом хлебе" width="640" height="600" loading="lazy">
+                <span class="badge text-bg-warning">Хит</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <p class="small text-secondary mb-1">Еда</p>
+                <h3 class="card-title h5">Бутерброд «Классика»</h3>
+                <p class="card-text text-secondary">Сэндвич с ветчиной и сыром на мягком белом хлебе. Быстрый перекус на каждый день.</p>
+                <p class="fs-5 fw-bold mt-auto mb-3">121 ₽</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-primary" href="product.html?id=sandwich">Подробнее</a>
+                  <button class="btn btn-outline-primary btn-order" type="button"
+                          data-bs-toggle="modal" data-bs-target="#orderModal" data-product="sandwich">
+                    <i class="bi bi-bag-plus" aria-hidden="true"></i> Заказать
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card h-100 shadow-sm product-card">
+              <div class="product-card__image rounded-top">
+                <img src="images/bull.webp" alt="Чёрный племенной бык в полный рост" width="632" height="640" loading="lazy">
+                <span class="badge text-bg-success">Новинка</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <p class="small text-secondary mb-1">Ферма</p>
+                <h3 class="card-title h5">Бычок-осеменитель</h3>
+                <p class="card-text text-secondary">Племенной чёрный бык крепкого телосложения. Спокойный нрав, подходит для фермерского хозяйства.</p>
+                <p class="fs-5 fw-bold mt-auto mb-3">150 000 ₽</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-primary" href="product.html?id=bull">Подробнее</a>
+                  <button class="btn btn-outline-primary btn-order" type="button"
+                          data-bs-toggle="modal" data-bs-target="#orderModal" data-product="bull">
+                    <i class="bi bi-bag-plus" aria-hidden="true"></i> Заказать
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card h-100 shadow-sm product-card">
+              <div class="product-card__image rounded-top">
+                <img src="images/vodka.webp" alt="Бутылка водки «Пять Озёр» с синей этикеткой" width="500" height="640" loading="lazy">
+                <span class="badge text-bg-danger">Скидка</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <p class="small text-secondary mb-1">Напитки <span class="badge text-bg-dark">18+</span></p>
+                <h3 class="card-title h5">Водка «Пять Озёр» 0,5 л</h3>
+                <p class="card-text text-secondary">Водка в классической стеклянной бутылке. Мягкий вкус, подходит для праздничного стола.</p>
+                <p class="fs-5 fw-bold mt-auto mb-3">548 ₽ <span class="price-old">610 ₽</span></p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-primary" href="product.html?id=vodka">Подробнее</a>
+                  <button class="btn btn-outline-primary btn-order" type="button"
+                          data-bs-toggle="modal" data-bs-target="#orderModal" data-product="vodka">
+                    <i class="bi bi-bag-plus" aria-hidden="true"></i> Заказать
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+      </div>
+    </section>
+
+    <!-- Призыв к действию -->
+    <section class="container my-5" aria-labelledby="cta-title">
+      <div class="cta-band text-white p-4 p-md-5 shadow">
+        <div class="row align-items-center g-3">
+          <div class="col-12 col-lg-8">
+            <h2 id="cta-title" class="h3 fw-bold mb-2">Не нашли нужный товар?</h2>
+            <p class="mb-0 opacity-75">Оставьте заявку на консультацию — подберём что-нибудь для вашего дома или фермы.</p>
+          </div>
+          <div class="col-12 col-lg-4 text-lg-end">
+            <a class="btn btn-light btn-lg text-primary fw-semibold" href="order.html?product=consult">Оставить заявку</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer text-white pt-5 pb-4 mt-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-5">
+          <p class="h5 mb-2">PunanovStore</p>
+          <p class="text-white-50 mb-0">
+            Учебный интернет-магазин: еда, напитки, товары для дома и фермы.
+            Версия сайта на Bootstrap 5 для контрольной работы №2.
+          </p>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <p class="fw-semibold mb-2">Разделы</p>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="catalog.html">Каталог</a></li>
+            <li class="mb-1"><a href="order.html">Оформить заявку</a></li>
+            <li class="mb-1"><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-4">
+          <p class="fw-semibold mb-2">Связь</p>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="tel:+79000000000"><i class="bi bi-telephone me-1" aria-hidden="true"></i>+7 900 000-00-00</a></li>
+            <li class="mb-1"><a class="text-break" href="mailto:shop@punanovstore.ru"><i class="bi bi-envelope me-1" aria-hidden="true"></i>shop@punanovstore.ru</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary my-4">
+      <div class="row g-2 small text-white-50">
+        <div class="col-12 col-md-6">&copy; 2026 PunanovStore. Учебный проект.</div>
+        <div class="col-12 col-md-6 text-md-end">Пунанов Е. А., группа ЭФБО-06-25</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно быстрой заявки (открывается кнопками с data-bs-target="#orderModal") -->
+  <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="orderModalLabel">Быстрая заявка</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-secondary">Оставьте контакты — менеджер перезвонит и уточнит детали заказа.</p>
+          <form id="quickOrderForm" class="needs-validation" action="#" method="post" novalidate>
+            <div class="mb-3">
+              <label for="modal-name" class="form-label">Имя *</label>
+              <input id="modal-name" name="name" type="text" class="form-control" minlength="2"
+                     autocomplete="given-name" required>
+              <div class="invalid-feedback">Введите имя (минимум 2 символа).</div>
+            </div>
+            <div class="mb-3">
+              <label for="modal-phone" class="form-label">Телефон *</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">+7</span>
+                <input id="modal-phone" name="phone" type="tel" class="form-control" inputmode="tel"
+                       placeholder="900 000-00-00" pattern="[0-9\s\-\(\)]{10,15}" autocomplete="tel-national" required>
+                <div class="invalid-feedback">Введите 10 цифр номера.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="modal-product" class="form-label">Товар *</label>
+              <select id="modal-product" name="product" class="form-select" required>
+                <option value="" selected disabled>Выберите товар</option>
+                    <option value="sandwich">Бутерброд «Классика» — 121 ₽</option>
+                    <option value="bull">Бычок-осеменитель — 150 000 ₽</option>
+                    <option value="vodka">Водка «Пять Озёр» 0,5 л — 548 ₽</option>
+                    <option value="pelmeni">Пельмени «Домашние» 1 кг — 389 ₽</option>
+                    <option value="hen">Курица-несушка — 1 200 ₽</option>
+                    <option value="samovar">Самовар электрический 3 л — 4 990 ₽</option>
+                    <option value="consult">Консультация по подбору товара</option>
+              </select>
+              <div class="invalid-feedback">Выберите товар или консультацию.</div>
+            </div>
+            <div class="form-check">
+              <input id="modal-agree" name="agree" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label" for="modal-agree">Согласен на обработку персональных данных *</label>
+              <div class="invalid-feedback">Без согласия заявку отправить нельзя.</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="submit" class="btn btn-primary" form="quickOrderForm">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast-уведомление об отправке заявки -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="appToastBody">Заявка отправлена!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle (включает Popper): navbar, modal, dropdown, accordion, tabs, carousel, toast, offcanvas -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
