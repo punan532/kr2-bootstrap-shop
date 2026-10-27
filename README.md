@@ -30,3 +30,9 @@ Bootstrap 5.3.8 подключён локально из папки `vendor/boot
 
 Выполнена главная страница на Bootstrap-сетке: навигация, hero-блок, преимущества,
 категории, сетка популярных товаров (`col-12 col-md-6 col-lg-4`, `g-4`), подвал.
+
+## Практическая работа 10
+
+Добавлены страницы `catalog.html`, `product.html`, `order.html`, `contacts.html`.
+Использованы компоненты `navbar`, `card`, `btn`, `badge`, `alert`, `modal`, `form-control`,
+`form-select`, `input-group`, `form-check`, `accordion`, `tabs`, `carousel`, `offcanvas`.
