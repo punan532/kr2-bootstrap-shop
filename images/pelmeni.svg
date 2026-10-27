@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="t">
+  <title id="t">Тарелка домашних пельменей со сметаной</title>
+  <!-- пар -->
+  <g fill="none" stroke="#c9d3e6" stroke-width="14" stroke-linecap="round">
+    <path d="M250 150c-30-40 30-60 0-100"/>
+    <path d="M320 140c-30-40 30-60 0-100"/>
+    <path d="M390 150c-30-40 30-60 0-100"/>
+  </g>
+  <!-- тарелка -->
+  <ellipse cx="320" cy="430" rx="270" ry="120" fill="#e8edf7"/>
+  <ellipse cx="320" cy="415" rx="270" ry="115" fill="#ffffff" stroke="#1f4fbf" stroke-width="10"/>
+  <ellipse cx="320" cy="410" rx="200" ry="78" fill="none" stroke="#6b8fe8" stroke-width="6" stroke-dasharray="14 12"/>
+  <!-- пельмени -->
+  <g fill="#f6ead2" stroke="#d9c39a" stroke-width="5">
+    <path d="M170 380c0-55 110-55 110 0c-20 22-90 22-110 0z"/>
+    <path d="M270 340c0-55 110-55 110 0c-20 22-90 22-110 0z"/>
+    <path d="M370 380c0-55 110-55 110 0c-20 22-90 22-110 0z"/>
+    <path d="M220 430c0-55 110-55 110 0c-20 22-90 22-110 0z"/>
+    <path d="M320 440c0-55 110-55 110 0c-20 22-90 22-110 0z"/>
+  </g>
+  <g fill="none" stroke="#d9c39a" stroke-width="4" stroke-linecap="round">
+    <path d="M190 365q35-20 70 0"/><path d="M290 325q35-20 70 0"/>
+    <path d="M390 365q35-20 70 0"/><path d="M240 415q35-20 70 0"/>
+    <path d="M340 425q35-20 70 0"/>
+  </g>
+  <!-- сметана -->
+  <path d="M300 300c-20-30 10-55 20-40c10-25 45-10 30 15c20 10 5 40-20 35c-10 10-40 5-30-10z" fill="#ffffff" stroke="#e3e3e3" stroke-width="4"/>
+  <!-- укроп -->
+  <g fill="#3f9d4a">
+    <circle cx="250" cy="372" r="6"/><circle cx="262" cy="380" r="5"/>
+    <circle cx="420" cy="360" r="6"/><circle cx="408" cy="368" r="5"/>
+    <circle cx="300" cy="425" r="5"/><circle cx="380" cy="430" r="6"/>
+    <circle cx="370" cy="315" r="5"/>
+  </g>
+</svg>

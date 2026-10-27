@@ -12,3 +12,21 @@
 ## Текущий статус
 
 Создан отдельный репозиторий для КР №2.
+
+## Описание
+
+Учебный интернет-магазин PunanovStore на Bootstrap — отдельная реализация предметной области КР №1.
+
+## Подключение Bootstrap
+
+Bootstrap 5.3.8 подключён локально из папки `vendor/bootstrap/`:
+
+- `vendor/bootstrap/css/bootstrap.min.css`;
+- `vendor/bootstrap/js/bootstrap.bundle.min.js`.
+
+`css/custom.css` подключается после Bootstrap.
+
+## Практическая работа 9
+
+Выполнена главная страница на Bootstrap-сетке: навигация, hero-блок, преимущества,
+категории, сетка популярных товаров (`col-12 col-md-6 col-lg-4`, `g-4`), подвал.
