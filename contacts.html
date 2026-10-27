@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Контакты PunanovStore: адрес, телефон, режим работы, доставка.">
+  <title>Контакты — PunanovStore</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <!-- Bootstrap 5.3.8 подключён локально (без CDN) -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Иконки Bootstrap Icons, тоже локально -->
+  <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <!-- Собственные стили подключаются ПОСЛЕ Bootstrap, чтобы переопределять его -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+  <a class="visually-hidden-focusable skip-link btn btn-primary" href="#main">Перейти к содержимому</a>
+
+  <nav class="navbar navbar-expand-lg bg-body shadow-sm sticky-top" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo.png" alt="PunanovStore — на главную" width="188" height="32">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+              aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+          <li class="nav-item"><a class="nav-link" href="product.html">Товар</a></li>
+          <li class="nav-item"><a class="nav-link" href="order.html">Заявка</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="contacts.html">Контакты</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Категории
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+              <li><a class="dropdown-item" href="catalog.html?category=food"><i class="bi bi-egg-fried me-2" aria-hidden="true"></i>Еда</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=drinks"><i class="bi bi-cup-straw me-2" aria-hidden="true"></i>Напитки</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=farm"><i class="bi bi-tree me-2" aria-hidden="true"></i>Ферма</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=home"><i class="bi bi-house-heart me-2" aria-hidden="true"></i>Для дома</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="catalog.html">Все товары</a></li>
+            </ul>
+          </li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
+              <i class="bi bi-lightning-charge" aria-hidden="true"></i> Быстрая заявка
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <div class="container my-4 my-lg-5">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Контакты</li>
+        </ol>
+      </nav>
+
+      <h1 class="h2 section-title mb-4">Контакты</h1>
+
+      <div class="row g-4 mb-5">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 shadow-sm border-0 text-center p-3">
+            <div class="card-body">
+              <span class="icon-circle mb-3"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
+              <h2 class="h6 text-secondary">Адрес</h2>
+              <p class="fw-semibold mb-0">г. Москва, ул. Учебная, д. 1</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 shadow-sm border-0 text-center p-3">
+            <div class="card-body">
+              <span class="icon-circle mb-3"><i class="bi bi-telephone" aria-hidden="true"></i></span>
+              <h2 class="h6 text-secondary">Телефон</h2>
+              <a class="fw-semibold text-decoration-none" href="tel:+79000000000">+7 900 000-00-00</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 shadow-sm border-0 text-center p-3">
+            <div class="card-body">
+              <span class="icon-circle mb-3"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+              <h2 class="h6 text-secondary">E-mail</h2>
+              <a class="fw-semibold text-decoration-none text-break" href="mailto:shop@punanovstore.ru">shop@punanovstore.ru</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 shadow-sm border-0 text-center p-3">
+            <div class="card-body">
+              <span class="icon-circle mb-3"><i class="bi bi-clock" aria-hidden="true"></i></span>
+              <h2 class="h6 text-secondary">Режим работы</h2>
+              <p class="fw-semibold mb-0">Ежедневно 9:00–20:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <section class="col-12 col-lg-6" aria-labelledby="schedule-title">
+          <h2 id="schedule-title" class="h4 mb-3">График пункта самовывоза</h2>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+              <thead class="table-light">
+                <tr><th scope="col">День</th><th scope="col">Время</th><th scope="col">Статус</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Пн–Пт</td><td>9:00–20:00</td><td><span class="badge text-bg-success">Работаем</span></td></tr>
+                <tr><td>Суббота</td><td>10:00–18:00</td><td><span class="badge text-bg-success">Работаем</span></td></tr>
+                <tr><td>Воскресенье</td><td>10:00–16:00</td><td><span class="badge text-bg-warning">Сокращённый день</span></td></tr>
+                <tr><td>Праздники</td><td>—</td><td><span class="badge text-bg-secondary">Выходной</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="alert alert-secondary d-flex gap-2" role="note">
+            <i class="bi bi-info-circle" aria-hidden="true"></i>
+            <span>Крупных животных выдаём только по предварительной договорённости с менеджером.</span>
+          </div>
+        </section>
+
+        <section class="col-12 col-lg-6" aria-labelledby="delivery-title">
+          <h2 id="delivery-title" class="h4 mb-3">Доставка и оплата</h2>
+          <div class="accordion" id="deliveryAccordion">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#delOne"
+                        aria-expanded="true" aria-controls="delOne">Сколько стоит доставка?</button>
+              </h3>
+              <div id="delOne" class="accordion-collapse collapse show" data-bs-parent="#deliveryAccordion">
+                <div class="accordion-body">Курьер по городу — 300 ₽, при заказе от 3000 ₽ — бесплатно. Самовывоз всегда бесплатный.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#delTwo"
+                        aria-expanded="false" aria-controls="delTwo">Как оплатить заказ?</button>
+              </h3>
+              <div id="delTwo" class="accordion-collapse collapse" data-bs-parent="#deliveryAccordion">
+                <div class="accordion-body">Наличными или картой при получении. Предоплата не требуется.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#delThree"
+                        aria-expanded="false" aria-controls="delThree">Продаёте ли вы алкоголь онлайн?</button>
+              </h3>
+              <div id="delThree" class="accordion-collapse collapse" data-bs-parent="#deliveryAccordion">
+                <div class="accordion-body">Нет, алкоголь можно только забронировать по заявке и выкупить в пункте самовывоза при предъявлении паспорта (18+).</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-grid d-sm-flex gap-2 mt-4">
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
+              <i class="bi bi-lightning-charge" aria-hidden="true"></i> Быстрая заявка
+            </button>
+            <a class="btn btn-outline-primary" href="order.html">Подробная заявка</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer text-white pt-5 pb-4 mt-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-5">
+          <p class="h5 mb-2">PunanovStore</p>
+          <p class="text-white-50 mb-0">
+            Учебный интернет-магазин: еда, напитки, товары для дома и фермы.
+            Версия сайта на Bootstrap 5 для контрольной работы №2.
+          </p>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <p class="fw-semibold mb-2">Разделы</p>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="catalog.html">Каталог</a></li>
+            <li class="mb-1"><a href="order.html">Оформить заявку</a></li>
+            <li class="mb-1"><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-4">
+          <p class="fw-semibold mb-2">Связь</p>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="tel:+79000000000"><i class="bi bi-telephone me-1" aria-hidden="true"></i>+7 900 000-00-00</a></li>
+            <li class="mb-1"><a class="text-break" href="mailto:shop@punanovstore.ru"><i class="bi bi-envelope me-1" aria-hidden="true"></i>shop@punanovstore.ru</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary my-4">
+      <div class="row g-2 small text-white-50">
+        <div class="col-12 col-md-6">&copy; 2026 PunanovStore. Учебный проект.</div>
+        <div class="col-12 col-md-6 text-md-end">Пунанов Е. А., группа ЭФБО-06-25</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно быстрой заявки (открывается кнопками с data-bs-target="#orderModal") -->
+  <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="orderModalLabel">Быстрая заявка</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-secondary">Оставьте контакты — менеджер перезвонит и уточнит детали заказа.</p>
+          <form id="quickOrderForm" class="needs-validation" action="#" method="post" novalidate>
+            <div class="mb-3">
+              <label for="modal-name" class="form-label">Имя *</label>
+              <input id="modal-name" name="name" type="text" class="form-control" minlength="2"
+                     autocomplete="given-name" required>
+              <div class="invalid-feedback">Введите имя (минимум 2 символа).</div>
+            </div>
+            <div class="mb-3">
+              <label for="modal-phone" class="form-label">Телефон *</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">+7</span>
+                <input id="modal-phone" name="phone" type="tel" class="form-control" inputmode="tel"
+                       placeholder="900 000-00-00" pattern="[0-9\s\-\(\)]{10,15}" autocomplete="tel-national" required>
+                <div class="invalid-feedback">Введите 10 цифр номера.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="modal-product" class="form-label">Товар *</label>
+              <select id="modal-product" name="product" class="form-select" required>
+                <option value="" selected disabled>Выберите товар</option>
+                    <option value="sandwich">Бутерброд «Классика» — 121 ₽</option>
+                    <option value="bull">Бычок-осеменитель — 150 000 ₽</option>
+                    <option value="vodka">Водка «Пять Озёр» 0,5 л — 548 ₽</option>
+                    <option value="pelmeni">Пельмени «Домашние» 1 кг — 389 ₽</option>
+                    <option value="hen">Курица-несушка — 1 200 ₽</option>
+                    <option value="samovar">Самовар электрический 3 л — 4 990 ₽</option>
+                    <option value="consult">Консультация по подбору товара</option>
+              </select>
+              <div class="invalid-feedback">Выберите товар или консультацию.</div>
+            </div>
+            <div class="form-check">
+              <input id="modal-agree" name="agree" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label" for="modal-agree">Согласен на обработку персональных данных *</label>
+              <div class="invalid-feedback">Без согласия заявку отправить нельзя.</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="submit" class="btn btn-primary" form="quickOrderForm">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast-уведомление об отправке заявки -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="appToastBody">Заявка отправлена!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle (включает Popper): navbar, modal, dropdown, accordion, tabs, carousel, toast, offcanvas -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

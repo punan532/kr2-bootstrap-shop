@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Форма заявки на покупку товара в PunanovStore.">
+  <title>Заявка — PunanovStore</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <!-- Bootstrap 5.3.8 подключён локально (без CDN) -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Иконки Bootstrap Icons, тоже локально -->
+  <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <!-- Собственные стили подключаются ПОСЛЕ Bootstrap, чтобы переопределять его -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-body-tertiary">
+  <a class="visually-hidden-focusable skip-link btn btn-primary" href="#main">Перейти к содержимому</a>
+
+  <nav class="navbar navbar-expand-lg bg-body shadow-sm sticky-top" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo.png" alt="PunanovStore — на главную" width="188" height="32">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+              aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+          <li class="nav-item"><a class="nav-link" href="product.html">Товар</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="order.html">Заявка</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Категории
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+              <li><a class="dropdown-item" href="catalog.html?category=food"><i class="bi bi-egg-fried me-2" aria-hidden="true"></i>Еда</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=drinks"><i class="bi bi-cup-straw me-2" aria-hidden="true"></i>Напитки</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=farm"><i class="bi bi-tree me-2" aria-hidden="true"></i>Ферма</a></li>
+              <li><a class="dropdown-item" href="catalog.html?category=home"><i class="bi bi-house-heart me-2" aria-hidden="true"></i>Для дома</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="catalog.html">Все товары</a></li>
+            </ul>
+          </li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
+              <i class="bi bi-lightning-charge" aria-hidden="true"></i> Быстрая заявка
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <div class="container my-4 my-lg-5">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Заявка</li>
+        </ol>
+      </nav>
+
+      <div class="row g-4">
+        <div class="col-12 col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white py-3">
+              <h1 class="h4 mb-0"><i class="bi bi-clipboard-check me-2" aria-hidden="true"></i>Форма заявки</h1>
+            </div>
+
+            <div class="card-body p-3 p-md-4">
+              <div class="alert alert-info" role="alert">
+                Заполните форму. Поля со звёздочкой (*) обязательны.
+              </div>
+
+              <!-- Показывается после успешной отправки (js/main.js) -->
+              <div class="alert alert-success d-none" role="alert" id="orderSuccess" tabindex="-1">
+                <h2 class="alert-heading h5"><i class="bi bi-check-circle me-1" aria-hidden="true"></i>Заявка принята!</h2>
+                <p class="mb-0" id="orderSuccessText">Менеджер свяжется с вами в ближайшее время.</p>
+              </div>
+
+              <form id="orderForm" class="needs-validation" action="#" method="post" novalidate>
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label for="order-name" class="form-label">Имя *</label>
+                    <input id="order-name" name="name" type="text" class="form-control" minlength="2"
+                           autocomplete="name" placeholder="Иван Иванов" required>
+                    <div class="invalid-feedback">Введите имя (минимум 2 символа).</div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label for="order-email" class="form-label">E-mail *</label>
+                    <div class="input-group has-validation">
+                      <span class="input-group-text"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+                      <input id="order-email" name="email" type="email" class="form-control"
+                             autocomplete="email" placeholder="name@example.ru" required>
+                      <div class="invalid-feedback">Введите корректный e-mail.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label for="order-phone" class="form-label">Телефон *</label>
+                    <div class="input-group has-validation">
+                      <span class="input-group-text">+7</span>
+                      <input id="order-phone" name="phone" type="tel" class="form-control" inputmode="tel"
+                             placeholder="900 000-00-00" pattern="[0-9\s\-\(\)]{10,15}"
+                             autocomplete="tel-national" aria-describedby="phoneHelp" required>
+                      <div class="invalid-feedback">Введите 10 цифр номера.</div>
+                    </div>
+                    <div id="phoneHelp" class="form-text">Например: 900 123-45-67</div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label for="order-product" class="form-label">Товар или тема заявки *</label>
+                    <select id="order-product" name="product" class="form-select" required>
+                      <option value="" selected disabled>Выберите товар</option>
+                    <option value="sandwich">Бутерброд «Классика» — 121 ₽</option>
+                    <option value="bull">Бычок-осеменитель — 150 000 ₽</option>
+                    <option value="vodka">Водка «Пять Озёр» 0,5 л — 548 ₽</option>
+                    <option value="pelmeni">Пельмени «Домашние» 1 кг — 389 ₽</option>
+                    <option value="hen">Курица-несушка — 1 200 ₽</option>
+                    <option value="samovar">Самовар электрический 3 л — 4 990 ₽</option>
+                    <option value="consult">Консультация по подбору товара</option>
+                    </select>
+                    <div class="invalid-feedback">Выберите товар или консультацию.</div>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <label for="order-qty" class="form-label">Количество</label>
+                    <div class="input-group">
+                      <input id="order-qty" name="qty" type="number" class="form-control" value="1" min="1" max="99">
+                      <span class="input-group-text">шт.</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-8">
+                    <fieldset>
+                      <legend class="form-label fs-6 mb-2">Способ получения</legend>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="delivery" id="delivery-pickup" value="pickup" checked>
+                        <label class="form-check-label" for="delivery-pickup">Самовывоз</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="delivery" id="delivery-courier" value="courier">
+                        <label class="form-check-label" for="delivery-courier">Курьер</label>
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  <!-- Поле адреса появляется только при выборе курьера -->
+                  <div class="col-12 d-none" id="addressField">
+                    <label for="order-address" class="form-label">Адрес доставки *</label>
+                    <input id="order-address" name="address" type="text" class="form-control"
+                           autocomplete="street-address" placeholder="Улица, дом, квартира" disabled>
+                    <div class="invalid-feedback">Укажите адрес для курьера.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="order-comment" class="form-label">Комментарий</label>
+                    <textarea id="order-comment" name="comment" class="form-control" rows="4" maxlength="500"
+                              aria-describedby="commentCounter" placeholder="Удобное время звонка, пожелания к заказу"></textarea>
+                    <div class="form-text text-end" id="commentCounter">0 / 500</div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input id="order-agree" name="agree" class="form-check-input" type="checkbox" required>
+                      <label class="form-check-label" for="order-agree">Я согласен на обработку персональных данных *</label>
+                      <div class="invalid-feedback">Без согласия заявку отправить нельзя.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 d-flex flex-wrap gap-2 btn-stack-sm">
+                    <button class="btn btn-primary btn-lg" type="submit">
+                      <i class="bi bi-send" aria-hidden="true"></i> Отправить заявку
+                    </button>
+                    <button class="btn btn-outline-secondary btn-lg" type="reset">Очистить</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Боковая колонка -->
+        <aside class="col-12 col-lg-4">
+          <div class="card shadow-sm mb-4">
+            <div class="card-body">
+              <h2 class="h5 card-title mb-3">Как проходит заказ</h2>
+              <ol class="list-group list-group-numbered list-group-flush order-steps">
+                <li class="list-group-item">Вы отправляете заявку</li>
+                <li class="list-group-item">Менеджер звонит в течение 15 минут</li>
+                <li class="list-group-item">Согласуем доставку или самовывоз</li>
+                <li class="list-group-item">Оплата при получении</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="card shadow-sm border-primary-subtle">
+            <div class="card-body">
+              <h2 class="h5 card-title">Нужна помощь?</h2>
+              <p class="text-secondary">Позвоните нам или напишите — подскажем с выбором.</p>
+              <a class="btn btn-outline-primary w-100 mb-2" href="tel:+79000000000"><i class="bi bi-telephone" aria-hidden="true"></i> +7 900 000-00-00</a>
+              <a class="btn btn-link w-100" href="contacts.html">Все контакты</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer text-white pt-5 pb-4 mt-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-5">
+          <p class="h5 mb-2">PunanovStore</p>
+          <p class="text-white-50 mb-0">
+            Учебный интернет-магазин: еда, напитки, товары для дома и фермы.
+            Версия сайта на Bootstrap 5 для контрольной работы №2.
+          </p>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <p class="fw-semibold mb-2">Разделы</p>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="catalog.html">Каталог</a></li>
+            <li class="mb-1"><a href="order.html">Оформить заявку</a></li>
+            <li class="mb-1"><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-4">
+          <p class="fw-semibold mb-2">Связь</p>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="tel:+79000000000"><i class="bi bi-telephone me-1" aria-hidden="true"></i>+7 900 000-00-00</a></li>
+            <li class="mb-1"><a class="text-break" href="mailto:shop@punanovstore.ru"><i class="bi bi-envelope me-1" aria-hidden="true"></i>shop@punanovstore.ru</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary my-4">
+      <div class="row g-2 small text-white-50">
+        <div class="col-12 col-md-6">&copy; 2026 PunanovStore. Учебный проект.</div>
+        <div class="col-12 col-md-6 text-md-end">Пунанов Е. А., группа ЭФБО-06-25</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно быстрой заявки (открывается кнопками с data-bs-target="#orderModal") -->
+  <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="orderModalLabel">Быстрая заявка</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-secondary">Оставьте контакты — менеджер перезвонит и уточнит детали заказа.</p>
+          <form id="quickOrderForm" class="needs-validation" action="#" method="post" novalidate>
+            <div class="mb-3">
+              <label for="modal-name" class="form-label">Имя *</label>
+              <input id="modal-name" name="name" type="text" class="form-control" minlength="2"
+                     autocomplete="given-name" required>
+              <div class="invalid-feedback">Введите имя (минимум 2 символа).</div>
+            </div>
+            <div class="mb-3">
+              <label for="modal-phone" class="form-label">Телефон *</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">+7</span>
+                <input id="modal-phone" name="phone" type="tel" class="form-control" inputmode="tel"
+                       placeholder="900 000-00-00" pattern="[0-9\s\-\(\)]{10,15}" autocomplete="tel-national" required>
+                <div class="invalid-feedback">Введите 10 цифр номера.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="modal-product" class="form-label">Товар *</label>
+              <select id="modal-product" name="product" class="form-select" required>
+                <option value="" selected disabled>Выберите товар</option>
+                    <option value="sandwich">Бутерброд «Классика» — 121 ₽</option>
+                    <option value="bull">Бычок-осеменитель — 150 000 ₽</option>
+                    <option value="vodka">Водка «Пять Озёр» 0,5 л — 548 ₽</option>
+                    <option value="pelmeni">Пельмени «Домашние» 1 кг — 389 ₽</option>
+                    <option value="hen">Курица-несушка — 1 200 ₽</option>
+                    <option value="samovar">Самовар электрический 3 л — 4 990 ₽</option>
+                    <option value="consult">Консультация по подбору товара</option>
+              </select>
+              <div class="invalid-feedback">Выберите товар или консультацию.</div>
+            </div>
+            <div class="form-check">
+              <input id="modal-agree" name="agree" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label" for="modal-agree">Согласен на обработку персональных данных *</label>
+              <div class="invalid-feedback">Без согласия заявку отправить нельзя.</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="submit" class="btn btn-primary" form="quickOrderForm">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast-уведомление об отправке заявки -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="appToastBody">Заявка отправлена!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle (включает Popper): navbar, modal, dropdown, accordion, tabs, carousel, toast, offcanvas -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
