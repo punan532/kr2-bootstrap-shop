@@ -7,11 +7,8 @@
   <title>Товар — PunanovStore</title>
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
-  <!-- Bootstrap 5.3.8 подключён локально (без CDN) -->
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-  <!-- Иконки Bootstrap Icons, тоже локально -->
   <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
-  <!-- Собственные стили подключаются ПОСЛЕ Bootstrap, чтобы переопределять его -->
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
@@ -60,7 +57,6 @@
 
   <main id="main">
 
-    <!-- По умолчанию показан бычок-осеменитель; product.html?id=... подставляет другой товар (js/main.js) -->
     <div class="container my-4 my-lg-5" id="productPage" data-product="bull">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -123,7 +119,6 @@
         </div>
       </div>
 
-      <!-- Дополнительный компонент: tabs -->
       <section class="mt-5" aria-label="Информация о товаре">
         <ul class="nav nav-tabs" id="productTabs" role="tablist">
           <li class="nav-item" role="presentation">
@@ -142,7 +137,7 @@
         <div class="tab-content border border-top-0 rounded-bottom p-3 p-md-4 bg-body">
           <div class="tab-pane fade show active" id="desc-pane" role="tabpanel" aria-labelledby="desc-tab" tabindex="0">
             <div data-field="description">
-              <p>Племенной бык абердин-ангусской породы, возраст 2 года. Крепкое телосложение, хорошая
+              <p>Племенной Вильдан(крепыш) абердин-ангусской породы, возраст 2 года. Крепкое телосложение, хорошая
                 наследственность, спокойный характер — подходит даже для небольшого фермерского хозяйства.</p>
               <p class="mb-0">Животное привито, имеет ветеринарный паспорт и документы о происхождении.
                 Доставка осуществляется специализированным транспортом.</p>
@@ -182,7 +177,6 @@
         </div>
       </section>
 
-      <!-- Дополнительный компонент: accordion -->
       <section class="mt-5" aria-labelledby="faq-title">
         <h2 id="faq-title" class="h4 section-title mb-3">Частые вопросы</h2>
         <div class="accordion" id="faqAccordion">
@@ -216,7 +210,6 @@
         </div>
       </section>
 
-      <!-- Похожие товары -->
       <section class="mt-5" aria-labelledby="related-title">
         <h2 id="related-title" class="h4 section-title mb-3">Смотрите также</h2>
         <div class="row g-4" id="relatedGrid">
@@ -343,7 +336,6 @@
     </div>
   </footer>
 
-  <!-- Модальное окно быстрой заявки (открывается кнопками с data-bs-target="#orderModal") -->
   <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
@@ -398,7 +390,6 @@
     </div>
   </div>
 
-  <!-- Toast-уведомление об отправке заявки -->
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
       <div class="d-flex">
@@ -408,7 +399,6 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS Bundle (включает Popper): navbar, modal, dropdown, accordion, tabs, carousel, toast, offcanvas -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
 </body>

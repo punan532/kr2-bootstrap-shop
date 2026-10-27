@@ -7,11 +7,8 @@
   <title>Заявка — PunanovStore</title>
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
-  <!-- Bootstrap 5.3.8 подключён локально (без CDN) -->
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-  <!-- Иконки Bootstrap Icons, тоже локально -->
   <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
-  <!-- Собственные стили подключаются ПОСЛЕ Bootstrap, чтобы переопределять его -->
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body class="bg-body-tertiary">
@@ -80,7 +77,6 @@
                 Заполните форму. Поля со звёздочкой (*) обязательны.
               </div>
 
-              <!-- Показывается после успешной отправки (js/main.js) -->
               <div class="alert alert-success d-none" role="alert" id="orderSuccess" tabindex="-1">
                 <h2 class="alert-heading h5"><i class="bi bi-check-circle me-1" aria-hidden="true"></i>Заявка принята!</h2>
                 <p class="mb-0" id="orderSuccessText">Менеджер свяжется с вами в ближайшее время.</p>
@@ -154,7 +150,6 @@
                     </fieldset>
                   </div>
 
-                  <!-- Поле адреса появляется только при выборе курьера -->
                   <div class="col-12 d-none" id="addressField">
                     <label for="order-address" class="form-label">Адрес доставки *</label>
                     <input id="order-address" name="address" type="text" class="form-control"
@@ -189,7 +184,6 @@
           </div>
         </div>
 
-        <!-- Боковая колонка -->
         <aside class="col-12 col-lg-4">
           <div class="card shadow-sm mb-4">
             <div class="card-body">
@@ -250,7 +244,6 @@
     </div>
   </footer>
 
-  <!-- Модальное окно быстрой заявки (открывается кнопками с data-bs-target="#orderModal") -->
   <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
@@ -305,7 +298,6 @@
     </div>
   </div>
 
-  <!-- Toast-уведомление об отправке заявки -->
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
       <div class="d-flex">
@@ -315,7 +307,6 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS Bundle (включает Popper): navbar, modal, dropdown, accordion, tabs, carousel, toast, offcanvas -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
 </body>

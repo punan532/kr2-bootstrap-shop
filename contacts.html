@@ -7,11 +7,8 @@
   <title>Контакты — PunanovStore</title>
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
-  <!-- Bootstrap 5.3.8 подключён локально (без CDN) -->
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-  <!-- Иконки Bootstrap Icons, тоже локально -->
   <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
-  <!-- Собственные стили подключаются ПОСЛЕ Bootstrap, чтобы переопределять его -->
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
@@ -208,7 +205,6 @@
     </div>
   </footer>
 
-  <!-- Модальное окно быстрой заявки (открывается кнопками с data-bs-target="#orderModal") -->
   <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
@@ -263,7 +259,6 @@
     </div>
   </div>
 
-  <!-- Toast-уведомление об отправке заявки -->
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
       <div class="d-flex">
@@ -273,7 +268,6 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS Bundle (включает Popper): navbar, modal, dropdown, accordion, tabs, carousel, toast, offcanvas -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
 </body>

@@ -7,11 +7,11 @@
   <title>Главная — PunanovStore</title>
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
-  <!-- Bootstrap 5.3.8 подключён локально (без CDN) -->
+
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-  <!-- Иконки Bootstrap Icons, тоже локально -->
+
   <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
-  <!-- Собственные стили подключаются ПОСЛЕ Bootstrap, чтобы переопределять его -->
+
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
@@ -60,7 +60,7 @@
 
   <main id="main">
 
-    <!-- Hero-блок: фон на всю ширину, содержимое в container -->
+
     <section class="hero py-5" aria-labelledby="hero-title">
       <div class="container">
         <div class="row align-items-center g-4 g-lg-5">
@@ -96,7 +96,6 @@
           </div>
 
           <div class="col-12 col-lg-6">
-            <!-- Дополнительный компонент: carousel -->
             <div id="heroCarousel" class="carousel slide hero-carousel shadow-sm" data-bs-ride="carousel" aria-label="Популярные товары">
               <div class="carousel-indicators">
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Слайд 1"></button>
@@ -137,7 +136,6 @@
       </div>
     </section>
 
-    <!-- Преимущества: 1 колонка → 2 (sm) → 4 (lg) -->
     <section class="container my-5" id="advantages" aria-labelledby="advantages-title">
       <h2 id="advantages-title" class="section-title text-center mb-4">Почему PunanovStore</h2>
       <div class="row g-4">
@@ -180,7 +178,6 @@
       </div>
     </section>
 
-    <!-- Категории: 2 колонки на телефоне, 4 на планшете и выше -->
     <section class="container my-5" aria-labelledby="categories-title">
       <h2 id="categories-title" class="section-title mb-4">Категории</h2>
       <div class="row g-3">
@@ -215,7 +212,6 @@
       </div>
     </section>
 
-    <!-- Популярные товары: 1 → 2 (md) → 3 (lg) колонки -->
     <section class="container my-5" id="popular" aria-labelledby="popular-title">
       <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
         <h2 id="popular-title" class="section-title mb-0">Популярные товары</h2>
@@ -288,7 +284,6 @@
       </div>
     </section>
 
-    <!-- Призыв к действию -->
     <section class="container my-5" aria-labelledby="cta-title">
       <div class="cta-band text-white p-4 p-md-5 shadow">
         <div class="row align-items-center g-3">
@@ -338,7 +333,6 @@
     </div>
   </footer>
 
-  <!-- Модальное окно быстрой заявки (открывается кнопками с data-bs-target="#orderModal") -->
   <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
@@ -393,7 +387,6 @@
     </div>
   </div>
 
-  <!-- Toast-уведомление об отправке заявки -->
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
       <div class="d-flex">
@@ -403,7 +396,6 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS Bundle (включает Popper): navbar, modal, dropdown, accordion, tabs, carousel, toast, offcanvas -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
 </body>

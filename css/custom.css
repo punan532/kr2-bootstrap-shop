@@ -1,21 +1,4 @@
-/* ==========================================================================
-   PunanovStore — custom.css
-   Точечные настройки поверх Bootstrap 5.3. Подключается ПОСЛЕ bootstrap.min.css,
-   поэтому может переопределять CSS-переменные и отдельные правила фреймворка.
-   Структура:
-   1. Фирменные переменные
-   2. Переопределение переменных Bootstrap (primary, кнопки)
-   3. Общие элементы (навигация, фокус, секции)
-   4. Hero-блок
-   5. Карточки товаров
-   6. Каталог и фильтры
-   7. Страница товара
-   8. Форма заявки, toast
-   9. Подвал
-   10. Адаптивные уточнения и prefers-reduced-motion
-   ========================================================================== */
 
-/* 1. Фирменные переменные (цвета взяты из логотипа КР №1) */
 :root {
   --ps-blue: #1f4fbf;
   --ps-blue-dark: #173c94;
@@ -26,8 +9,6 @@
   --ps-image-bg: #f4f6fb;
 }
 
-/* 2. Bootstrap: меняем primary через его же CSS-переменные,
-      а не переписываем компоненты целиком */
 :root {
   --bs-primary: var(--ps-blue);
   --bs-primary-rgb: 31, 79, 191;
@@ -90,7 +71,7 @@
   --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem var(--bs-focus-ring-color);
 }
 
-/* 3. Общие элементы */
+
 body {
   min-height: 100vh;
   display: flex;
@@ -101,7 +82,6 @@ main {
   flex: 1 0 auto;
 }
 
-/* видимый фокус для навигации с клавиатуры */
 a:focus-visible,
 .btn:focus-visible,
 .nav-link:focus-visible {
@@ -160,7 +140,7 @@ a:focus-visible,
   font-size: 1.35rem;
 }
 
-/* 4. Hero-блок */
+
 .hero {
   background:
     radial-gradient(circle at 85% 20%, rgba(107, 143, 232, 0.35), transparent 45%),
@@ -200,7 +180,7 @@ a:focus-visible,
   border-radius: var(--ps-radius-lg);
 }
 
-/* 5. Карточки товаров */
+
 .product-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -235,7 +215,7 @@ a:focus-visible,
   z-index: 1;
 }
 
-/* кнопка «Заказать» должна оставаться кликабельной поверх stretched-link */
+
 .product-card .btn-order {
   position: relative;
   z-index: 2;
@@ -247,7 +227,7 @@ a:focus-visible,
   font-size: 0.9em;
 }
 
-/* 6. Каталог и фильтры */
+
 @media (min-width: 992px) {
   .catalog-sidebar {
     position: sticky;
@@ -259,7 +239,7 @@ a:focus-visible,
   display: none;
 }
 
-/* 7. Страница товара */
+
 .product-gallery {
   position: relative;
   background: var(--ps-image-bg);
@@ -284,7 +264,7 @@ a:focus-visible,
   text-align: center;
 }
 
-/* 8. Форма заявки и toast */
+
 .order-steps .list-group-item {
   border-left: 3px solid transparent;
 }
@@ -297,7 +277,7 @@ a:focus-visible,
   z-index: 1090;
 }
 
-/* 9. Подвал */
+
 .site-footer {
   background: #13203f;
 }
@@ -312,7 +292,7 @@ a:focus-visible,
   color: #ffffff;
 }
 
-/* 10. Адаптивные уточнения */
+
 @media (max-width: 575.98px) {
   .hero-carousel .carousel-item img {
     height: 240px;
@@ -322,7 +302,7 @@ a:focus-visible,
     font-size: 2rem;
   }
 
-  /* кнопки действий на узких экранах — во всю ширину */
+
   .btn-stack-sm > .btn {
     flex: 1 1 100%;
   }
